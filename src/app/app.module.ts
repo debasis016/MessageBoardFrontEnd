@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 
@@ -15,6 +15,7 @@ import { NewMessageComponent } from './new-message.component';
 
 import { NavComponent } from './nav.component';
 import { HomeComponent } from './home.component';
+import { RegisterComponent } from './register.component';
 
 let routes: Routes = [
   {
@@ -22,18 +23,22 @@ let routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'messages',
+    component: MessagesComponent
+  },
+  {
     path: 'messages/:name',
     component: MessagesComponent
   },
   {
-    path: 'messages',
-    component: MessagesComponent
+    path: 'register',
+    component: RegisterComponent
   }];
 
 @NgModule({
-  imports: [BrowserModule, MaterialModule, BrowserAnimationsModule, HttpModule, FormsModule,
+  imports: [BrowserModule, MaterialModule, BrowserAnimationsModule, HttpModule, FormsModule, ReactiveFormsModule,
             RouterModule.forRoot(routes, { useHash: true })],
-  declarations: [AppComponent, MessagesComponent, NewMessageComponent, NavComponent, HomeComponent],
+  declarations: [AppComponent, MessagesComponent, NewMessageComponent, NavComponent, HomeComponent, RegisterComponent],
   bootstrap: [AppComponent],
   providers: [WebService]
 })
