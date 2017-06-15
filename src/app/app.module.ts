@@ -16,6 +16,7 @@ import { NewMessageComponent } from './new-message.component';
 import { NavComponent } from './nav.component';
 import { HomeComponent } from './home.component';
 import { RegisterComponent } from './register.component';
+import { AuthService } from './auth.service';
 
 let routes: Routes = [
   {
@@ -40,6 +41,6 @@ let routes: Routes = [
             RouterModule.forRoot(routes, { useHash: true })],
   declarations: [AppComponent, MessagesComponent, NewMessageComponent, NavComponent, HomeComponent, RegisterComponent],
   bootstrap: [AppComponent],
-  providers: [WebService]
+  providers: [WebService, AuthService]
 })
 export class AppModule { }

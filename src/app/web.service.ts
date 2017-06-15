@@ -29,6 +29,7 @@ export class WebService {
         this.handleError(this.errorMessageGet);
       });
     }
+    finally {}
     };
 
   async postMessage(message: any) {

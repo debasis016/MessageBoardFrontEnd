@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from './auth.service'
+
 @Component({
   moduleId: module.id,
   selector: 'register',
@@ -12,7 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class RegisterComponent  {
   form: any;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private auth: AuthService) {
     this.form = fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -23,7 +25,8 @@ export class RegisterComponent  {
   }
 
   onSubmit() {
-    console.log(this.form.errors)
+    console.log(this.form.errors);
+    this.auth.register(this.form.value);
   }
 
   isValid(control: any) {
@@ -32,7 +35,7 @@ export class RegisterComponent  {
 }
 
 function matchingFields(field1: any, field2: any) {
-  return form => {
+  return (form: any) => {
     if (form.controls[field1].value !== form.controls[field2].value) {
       return {mismatchedFields: true}
     }
@@ -40,7 +43,7 @@ function matchingFields(field1: any, field2: any) {
 };
 
 function emailValid() {
-  return control => {
+  return (control: any) => {
     // tslint:disable-next-line:max-line-length
     let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     return regex.test(control.value) ? null : { invalidEmail: true }
