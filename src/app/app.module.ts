@@ -17,6 +17,7 @@ import { NavComponent } from './nav.component';
 import { HomeComponent } from './home.component';
 import { RegisterComponent } from './register.component';
 import { AuthService } from './auth.service';
+import { LoginComponent } from './login.component';
 
 let routes: Routes = [
   {
@@ -34,12 +35,16 @@ let routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }];
 
 @NgModule({
   imports: [BrowserModule, MaterialModule, BrowserAnimationsModule, HttpModule, FormsModule, ReactiveFormsModule,
             RouterModule.forRoot(routes, { useHash: true })],
-  declarations: [AppComponent, MessagesComponent, NewMessageComponent, NavComponent, HomeComponent, RegisterComponent],
+  declarations: [AppComponent, MessagesComponent, NewMessageComponent, NavComponent, HomeComponent, RegisterComponent, LoginComponent],
   bootstrap: [AppComponent],
   providers: [WebService, AuthService]
 })
