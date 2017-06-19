@@ -18,6 +18,7 @@ import { HomeComponent } from './home.component';
 import { RegisterComponent } from './register.component';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login.component';
+import { UserComponent } from './user.component';
 
 let routes: Routes = [
   {
@@ -39,12 +40,17 @@ let routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'user',
+    component: UserComponent
   }];
 
 @NgModule({
   imports: [BrowserModule, MaterialModule, BrowserAnimationsModule, HttpModule, FormsModule, ReactiveFormsModule,
             RouterModule.forRoot(routes, { useHash: true })],
-  declarations: [AppComponent, MessagesComponent, NewMessageComponent, NavComponent, HomeComponent, RegisterComponent, LoginComponent],
+  declarations: [AppComponent, MessagesComponent, NewMessageComponent, NavComponent, HomeComponent, RegisterComponent, LoginComponent,
+                 UserComponent],
   bootstrap: [AppComponent],
   providers: [WebService, AuthService]
 })

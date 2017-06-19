@@ -1,14 +1,12 @@
 import { Component} from '@angular/core';
 import { WebService } from './web.service';
+import { AuthService } from './auth.service';
 
 @Component({
-    selector:'new-message',
+    selector: 'new-message',
     template: `
     <md-card class="card">
         <md-card-content>
-            <md-input-container>
-                <input [(ngModel)]="message.owner" mdInput placeholder="Name">
-            </md-input-container>
             <md-input-container>
                 <textarea [(ngModel)]="message.text" mdInput placeholder="Message"></textarea>
             </md-input-container>
@@ -20,21 +18,19 @@ import { WebService } from './web.service';
     `
 })
 
-export class NewMessageComponent{
+export class NewMessageComponent {
 
     // @Output() onPosted = new EventEmitter();
 
-    //messages: any;
-    constructor(private webService: WebService) { };
+    // messages: any;
     message = {
-        owner: "",
-        text: ""
+        owner: this.auth.name,
+        text: ''
     }
-    
+    constructor(private webService: WebService, private auth: AuthService ) { }
 
-    post(){
+    post() {
         this.webService.postMessage(this.message);
         // this.onPosted.emit(this.message);
     }
-
 }

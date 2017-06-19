@@ -44,7 +44,13 @@ export class WebService {
   }
 
   getUser() {
+    console.log(this.auth.tokenHeader);
     return this.http.get(this.BASE_URL + '/users/me', this.auth.tokenHeader).map(res => res.json());
+  }
+
+  saveUser(userData: any) {
+    console.log(this.auth.tokenHeader);
+    return this.http.post(this.BASE_URL + '/users/me', userData, this.auth.tokenHeader).map(res => res.json());
   }
 
   private handleError(error: string) {

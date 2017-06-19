@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   get tokenHeader() {
-    let header = new Headers({'Authorization': 'Bearer' + localStorage.getItem(this.TOKEN_KEY)});
+    let header = new Headers({'Authorization': 'Bearer ' + localStorage.getItem(this.TOKEN_KEY)});
     return new RequestOptions({headers: header});
   }
 
